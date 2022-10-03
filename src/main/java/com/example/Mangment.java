@@ -1,9 +1,7 @@
 package com.example;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.jar.Attributes.Name;
 import java.util.stream.Collectors;
 
 public class Mangment {
@@ -137,12 +135,39 @@ public class Mangment {
         sortedNames.forEach(student -> System.out.println(student.getFristName()));
         }
 
+        public void searchDepartement(){
+            List<teacher> sorted = listT.stream().filter( dep -> dep.getdepartement().equals("IT")).collect(Collectors.toList());
+            sorted.forEach(dep -> System.out.println(dep));
+        }
+
         public void addDepartement(departement record)
     {
             listDep.add(record);
     }
 
-    
-
+    public void displayDepartement(){
+        if(listDep.isEmpty()) System.out.println("acun departement disponible");
+        for(departement DEP : listDep){
+            System.out.println(DEP.toString());
+        }
     }
+
+        public void delete(int recIdNumber)
+        {
+            departement recordDep = null;
+            for (departement ll : listDep) {
+                if (ll.getIdDEpartement() == recIdNumber) {
+                    recordDep = ll;
+                }
+            }
+            if (recordDep == null) {
+                System.out.println("Departement Invalide");
+            }
+            else { 
+                listDep.remove(recordDep);
+                System.out.println("suppression avec succès");
+                }
+            }
+         
+}
 

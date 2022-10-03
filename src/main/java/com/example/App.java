@@ -216,16 +216,28 @@ public final class App {
                         optionDepartement = input.nextInt();
                         switch(optionDepartement){
                             case 1:
-                            System.out.println("Entre le numero du departement");
+                            System.out.print("Entre le numero du departement : ");
                             int idDEpartement = input.nextInt();
-                            System.out.println("Entre le nom du departement");
+                            System.out.print("Entre le nom du departement : ");
                             String nameDepartement = input.next();
-                            System.out.println("Entre le nom du college");
+                            System.out.print("Entre le nom du college : ");
                             String nameCollege = input.next();
     
                             DE = new departement(idDEpartement, nameDepartement, nameCollege);
                             hr.addDepartement(DE);
                             System.out.println(DE.toString());
+                            break;
+                            case 2:
+                            hr.displayDepartement();
+                            break;
+                            case 3:
+                                int id_dep;
+                                System.out.print("merci de rendrer le numero de departement : ");
+                                id_dep = input.nextInt();
+                                hr.delete(id_dep);
+                            break;
+                            case 4:
+                            hr.searchDepartement();
                             break;
                         }
                        
@@ -292,9 +304,10 @@ public final class App {
     private static void Departement_menu() {
         System.out.println("******************************** Departement menu ***************************************");
         System.out.println("1: Ajouter Un departement");
-        // System.out.println("2: Chercher Un professeur");
-        // System.out.println("3: Chercher un responsables");
-        System.out.println("**********************************************************************************");
+        System.out.println("2: Afficher tous les départements");
+        System.out.println("3: Suprimer un departement");
+        System.out.println("4: Chercher ");
+        System.out.println("*****************************************************************************************");
         System.out.print("Enter your selection : ");
     }
 }
