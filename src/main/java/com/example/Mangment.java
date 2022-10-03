@@ -1,10 +1,16 @@
 package com.example;
 
+import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.jar.Attributes.Name;
+import java.util.stream.Collectors;
 
 public class Mangment {
 
-    LinkedList<student> list;
+    // LinkedList<student> list;
+    List<student> list = new LinkedList<>();
+
     LinkedList<teacher> listT;
     LinkedList<responsable> listR;
 
@@ -121,4 +127,11 @@ public class Mangment {
             System.out.println(record.toString());
         }
     }
-}
+
+
+    public void searchbyGroup(String nameClasse){
+        List<student> sortedNames = list.stream().filter(student -> student.getnameClass().equals(nameClasse)).collect(Collectors.toList());
+        sortedNames.forEach(student -> System.out.println(student.getFristName()));
+        }
+    }
+

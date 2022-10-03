@@ -199,6 +199,11 @@ public final class App {
                             int idrespo = input.nextInt();
                              hr.findR(idrespo);
                             break;
+                            case 4:
+                            System.out.print( " Merci de saisir le Nom du Group : ");
+                            String nameClasse = input.next();
+                            hr.searchbyGroup(nameClasse);
+                            break;
                         }
 
                 break;
@@ -253,6 +258,7 @@ public final class App {
         System.out.println("1: chercher un etudiant");
         System.out.println("2: Chercher Un professeur");
         System.out.println("3: Chercher un responsables");
+        System.out.println("4: Chercher sur des etudiant avec le Nom du Group");
         System.out.println("**********************************************************************************");
         System.out.print("Enter your selection : ");
     }
