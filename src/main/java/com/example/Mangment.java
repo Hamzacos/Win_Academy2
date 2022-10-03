@@ -18,7 +18,7 @@ public class Mangment {
 
     public void add(student record)
     {
-        if (!find(record.getIdUser())) {
+        if (!finds(record.getIdUser())) {
             list.add(record);
         }
         else {
@@ -29,7 +29,7 @@ public class Mangment {
 
     public void addTeacher(teacher record)
     {
-        if (!find(record.getIdUser())) {
+        if (!findP(record.getIdUser())) {
             listT.add(record);
         }
         else {
@@ -40,7 +40,7 @@ public class Mangment {
 
     public void addRespo(responsable record)
     {
-        if (!find(record.getIdUser())) {
+        if (!findR(record.getIdUser())) {
             listR.add(record);
         }
         else {
@@ -51,19 +51,47 @@ public class Mangment {
 
     
 
-    public boolean find(int idNimber)
+    public boolean finds(int idNimber)
     {
-        for (User l : list) {
+        for (student l : list) {
             if (l.getIdUser() == idNimber) {
  
                 System.out.println(l);
                 return true;
+            }else{
+                System.out.println("Etudiant n'existe pas");
             }
         }
         return false;
     }
 
+    public boolean findP(int idNimber)
+    {
+        for (teacher l : listT) {
+            if (l.getIdUser() == idNimber) {
+ 
+                System.out.println(l);
+                return true;
+            }else{
+                System.out.println("Prof n'existe pas");
+            }
+        }
+        return false;
+    }
 
+    public boolean findR(int idNimber)
+    {
+        for (responsable l : listR) {
+            if (l.getIdUser() == idNimber) {
+ 
+                System.out.println(l);
+                return true;
+            }else{
+                System.out.println("Responsable n'existe pas");
+            }
+        }
+        return false;
+    }
     public void displayS()
     {
         if (list.isEmpty()) {
@@ -93,5 +121,4 @@ public class Mangment {
             System.out.println(record.toString());
         }
     }
-
 }

@@ -7,6 +7,8 @@ public class student extends User {
 
     public student() {}
 
+    // job jobs = job.responsable;
+    
     public student(int idUser, String fristName,String lastName,String phone,String email,String role,String startDate,String nameClass)
     {
             this.idUser = idUser;
@@ -17,6 +19,7 @@ public class student extends User {
             this.role = role;
             this.startDate = startDate;
             this.nameClass = nameClass;
+           
     }
 
     public String getStartDate() {

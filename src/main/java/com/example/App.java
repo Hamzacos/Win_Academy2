@@ -90,7 +90,6 @@ public final class App {
                                 System.out.print("Nom du classe : ");
                                 String nameClass = input.next();
 
-
                                 record  = new student(idUser,firstName,lastName,phone,email,role,startDate,nameClass);
                                 hr.add(record);
                                 System.out.println(record.toString());
@@ -177,7 +176,32 @@ public final class App {
                     break;
                 }
                 break;
+                case 3:
+                        int searchOption = 0;
+                        search_Dispaly();
+                        searchOption = input.nextInt();
+                        switch(searchOption){
+                            case 1:
+                            System.out.print(
+                                " Merci de saisir le Numero d'etudiant : ");
+                            int id = input.nextInt();
+                             hr.finds(id);
+                            break;
+                            case 2:
+                            System.out.print(
+                                " Merci de saisir le Numero du prof : ");
+                            int idteacher = input.nextInt();
+                             hr.findP(idteacher);
+                            break;
+                            case 3:
+                            System.out.print(
+                                " Merci de saisir le Numero du Respo : ");
+                            int idrespo = input.nextInt();
+                             hr.findR(idrespo);
+                            break;
+                        }
 
+                break;
                     default:
                     System.out.println("\nInvalid input\n");
                     break;
@@ -194,6 +218,7 @@ public final class App {
         System.out.println("============================= MENU Principale ============================");
         System.out.println("1: Ajouter des utilisateurs");
         System.out.println("2:Afficher des utilisateurs");
+        System.out.println("3:Search un utilisateur");
         System.out.println("==========================================================================");
 
         // System.out.println(": Exit program");
@@ -218,6 +243,16 @@ public final class App {
         System.out.println("1: Afficher tous les etudiants");
         System.out.println("2: Afficher tous les professeur");
         System.out.println("3: Afficher tous les responsables");
+        System.out.println("**********************************************************************************");
+        System.out.print("Enter your selection : ");
+    }
+
+
+    public static void  search_Dispaly(){
+        System.out.println("******************************** Search menu ***************************************");
+        System.out.println("1: chercher un etudiant");
+        System.out.println("2: Chercher Un professeur");
+        System.out.println("3: Chercher un responsables");
         System.out.println("**********************************************************************************");
         System.out.print("Enter your selection : ");
     }
