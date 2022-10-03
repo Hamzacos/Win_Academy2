@@ -48,7 +48,11 @@ public final class App {
             DA.setDep("IT");
             hr.addRespo(DA);
 
-
+            departement DE = new departement();
+            DE.setIdDEpartement(1);
+            DE.setName("IT");
+            DE.setNameSchool("Youcode");
+            hr.addDepartement(DE);
         try (
         Scanner input = new Scanner(System.in)) {
            
@@ -205,7 +209,26 @@ public final class App {
                             hr.searchbyGroup(nameClasse);
                             break;
                         }
-
+                break;
+                case 4:
+                        int optionDepartement = 0;
+                        Departement_menu();
+                        optionDepartement = input.nextInt();
+                        switch(optionDepartement){
+                            case 1:
+                            System.out.println("Entre le numero du departement");
+                            int idDEpartement = input.nextInt();
+                            System.out.println("Entre le nom du departement");
+                            String nameDepartement = input.next();
+                            System.out.println("Entre le nom du college");
+                            String nameCollege = input.next();
+    
+                            DE = new departement(idDEpartement, nameDepartement, nameCollege);
+                            hr.addDepartement(DE);
+                            System.out.println(DE.toString());
+                            break;
+                        }
+                       
                 break;
                     default:
                     System.out.println("\nInvalid input\n");
@@ -218,12 +241,14 @@ public final class App {
 
     }
 
+
     public static void menu()
     {
         System.out.println("============================= MENU Principale ============================");
         System.out.println("1: Ajouter des utilisateurs");
         System.out.println("2:Afficher des utilisateurs");
         System.out.println("3:Search un utilisateur");
+        System.out.println("4:Departement");
         System.out.println("==========================================================================");
 
         // System.out.println(": Exit program");
@@ -258,7 +283,17 @@ public final class App {
         System.out.println("1: chercher un etudiant");
         System.out.println("2: Chercher Un professeur");
         System.out.println("3: Chercher un responsables");
-        System.out.println("4: Chercher sur des etudiant avec le Nom du Group");
+        System.out.println("4:Sélectionner tous les étudiants dans le même groupe");
+        System.out.println("**********************************************************************************");
+        System.out.print("Enter your selection : ");
+    }
+
+
+    private static void Departement_menu() {
+        System.out.println("******************************** Departement menu ***************************************");
+        System.out.println("1: Ajouter Un departement");
+        // System.out.println("2: Chercher Un professeur");
+        // System.out.println("3: Chercher un responsables");
         System.out.println("**********************************************************************************");
         System.out.print("Enter your selection : ");
     }

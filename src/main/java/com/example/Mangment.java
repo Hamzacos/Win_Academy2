@@ -10,15 +10,16 @@ public class Mangment {
 
     // LinkedList<student> list;
     List<student> list = new LinkedList<>();
-
     LinkedList<teacher> listT;
     LinkedList<responsable> listR;
+    LinkedList<departement> listDep;
 
     public Mangment()
     {
         listT = new LinkedList<>();
         list = new LinkedList<>();
         listR = new LinkedList<>();
+        listDep = new LinkedList<>();
     }
 
 
@@ -29,7 +30,7 @@ public class Mangment {
         }
         else {
             System.out.println(
-       "Record already exists in the Record list");
+       "Etudiant existe");
         }
     }
 
@@ -40,7 +41,7 @@ public class Mangment {
         }
         else {
             System.out.println(
-       "Record already exists in the Record list");
+       " Prof existe");
         }
     }
 
@@ -51,7 +52,7 @@ public class Mangment {
         }
         else {
             System.out.println(
-       "Record already exists in the Record list");
+       "Responsable existe");
         }
     }
 
@@ -86,6 +87,7 @@ public class Mangment {
     }
 
     public boolean findR(int idNimber)
+
     {
         for (responsable l : listR) {
             if (l.getIdUser() == idNimber) {
@@ -98,6 +100,7 @@ public class Mangment {
         }
         return false;
     }
+    
     public void displayS()
     {
         if (list.isEmpty()) {
@@ -133,5 +136,13 @@ public class Mangment {
         List<student> sortedNames = list.stream().filter(student -> student.getnameClass().equals(nameClasse)).collect(Collectors.toList());
         sortedNames.forEach(student -> System.out.println(student.getFristName()));
         }
+
+        public void addDepartement(departement record)
+    {
+            listDep.add(record);
+    }
+
+    
+
     }
 
