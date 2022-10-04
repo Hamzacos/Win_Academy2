@@ -18,8 +18,7 @@ public class student extends User {
             this.email = email;
             this.role = role;
             this.startDate = startDate;
-            this.nameClass = nameClass;
-           
+            this.nameClass = nameClass;        
     }
 
     public String getStartDate() {

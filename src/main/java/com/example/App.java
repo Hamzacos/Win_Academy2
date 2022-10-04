@@ -1,5 +1,6 @@
 package com.example;
 
+import java.security.Principal;
 import java.util.Scanner;
 
 public final class App {
@@ -9,10 +10,7 @@ public final class App {
     public static void main(String[] args) {
        
         
-        // student hr  = new student();
         Mangment hr = new Mangment();
-        // Mangment tr = new Mangment();
-        // User record = new User();
 
         student record  = new student();       
             record.setIdUser(1);
@@ -53,6 +51,14 @@ public final class App {
             DE.setName("IT");
             DE.setNameSchool("Youcode");
             hr.addDepartement(DE);
+
+            grade exameinfo = new grade();
+            exameinfo.setIdNote(1);
+            exameinfo.setExameGrade(13);
+            exameinfo.setIdStudent(1);
+            exameinfo.setSubject("JAVA");
+            exameinfo.setExameDate("2022-03-12");
+            hr.addNote(exameinfo);
         try (
         Scanner input = new Scanner(System.in)) {
            
@@ -237,30 +243,59 @@ public final class App {
                                 hr.delete(id_dep);
                             break;
                             case 4:
-                            hr.searchDepartement();
+                            System.out.print( " Merci de saisir le Nom du departement : ");
+                            String depName = input.next();
+                            hr.searchDepartement(depName);
+                            break;
+                        }     
+                break;
+                case 5:
+                        int optionGrade = 0;
+                        menu_Note();
+                        optionGrade = input.nextInt();
+                        switch(optionGrade){
+                            case 1:
+                                System.out.print("merci d'entrer le numero d'exame : ");
+                                int idNoteExame = input.nextInt();
+                                System.out.print("Merci d'entrer le nom de matiere : ");
+                                String subject = input.next();
+                                System.out.print("Merci d'entrer le numero d'etudiant : ");
+                                int idStudent = input.nextInt();
+                                System.out.print("Merci d'entrer la note d'exame : ");
+                                float exameGrade = input.nextFloat();
+                                System.out.print("Merci de rentrer la date d'exame YYYY-MM-DD : ");
+                                String exameDate = input.next();
+                                exameinfo = new grade(idNoteExame,exameGrade,idStudent,subject,exameDate);
+                                hr.addNote(exameinfo);
+                                System.out.println(exameinfo.toString());
+                            break;
+                            case 2:
+                                hr.displayAll();
+                            break;
+                            case 3:
+                            System.out.println("merci d'entre le nom du class");
+                            String nomGroup = input.next();
+                            hr.searchByClass(nomGroup);
                             break;
                         }
-                       
                 break;
                     default:
                     System.out.println("\nInvalid input\n");
                     break;
                 }
             
-   }     
-   while (option != 9);
-        }
-
+   }while (option != 9);   
     }
-
+}
 
     public static void menu()
     {
-        System.out.println("============================= MENU Principale ============================");
+        System.out.println("============================= MENU ============================");
         System.out.println("1: Ajouter des utilisateurs");
         System.out.println("2:Afficher des utilisateurs");
         System.out.println("3:Search un utilisateur");
         System.out.println("4:Departement");
+        System.out.println("5:Note");
         System.out.println("==========================================================================");
 
         // System.out.println(": Exit program");
@@ -273,7 +308,7 @@ public final class App {
     {
         System.out.println("******************************** SOUS-MENU ***************************************");
         System.out.println("1: Ajouter un etudiant");
-        System.out.println("2: Ajouter un prof ");
+        System.out.println("2: Ajouter un Enseignant ");
         System.out.println("3: Ajouter un responsable");
         System.out.println("**********************************************************************************");
         System.out.print("Enter your selection : ");
@@ -306,7 +341,17 @@ public final class App {
         System.out.println("1: Ajouter Un departement");
         System.out.println("2: Afficher tous les départements");
         System.out.println("3: Suprimer un departement");
-        System.out.println("4: Chercher ");
+        System.out.println("4: Aficher tous les prof dans un departement");
+        System.out.println("*****************************************************************************************");
+        System.out.print("Enter your selection : ");
+    }
+
+    private static void menu_Note() {
+        System.out.println("******************************** Departement menu ***************************************");
+        System.out.println("1: Ajouter Une Note");
+        System.out.println("2: Afficher tous les note");
+        System.out.println("3: chercher");
+        // System.out.println("4: Aficher tous les prof dans un departement");
         System.out.println("*****************************************************************************************");
         System.out.print("Enter your selection : ");
     }

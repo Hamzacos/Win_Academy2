@@ -12,7 +12,7 @@ public class departement {
 
     public departement(int idDEpartement, String name, String nameSchool) {
         this.idDEpartement = idDEpartement;
-        Name = name;
+        this.Name = name;
         this.nameSchool = nameSchool;
     }
     

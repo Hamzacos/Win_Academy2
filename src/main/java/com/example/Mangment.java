@@ -1,23 +1,28 @@
 package com.example;
 
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javafx.print.Collation;
+
 public class Mangment {
 
-    // LinkedList<student> list;
-    List<student> list = new LinkedList<>();
+    LinkedList<student> list;
     LinkedList<teacher> listT;
     LinkedList<responsable> listR;
     LinkedList<departement> listDep;
+    LinkedList<grade> listNote;
 
     public Mangment()
     {
-        listT = new LinkedList<>();
-        list = new LinkedList<>();
-        listR = new LinkedList<>();
+        listT   = new LinkedList<>();
+        list    = new LinkedList<>();
+        listR   = new LinkedList<>();
         listDep = new LinkedList<>();
+        listNote = new LinkedList<>();
     }
 
 
@@ -131,12 +136,12 @@ public class Mangment {
 
 
     public void searchbyGroup(String nameClasse){
-        List<student> sortedNames = list.stream().filter(student -> student.getnameClass().equals(nameClasse)).collect(Collectors.toList());
+        List<student> sortedNames = list.stream().filter(c -> c.getnameClass().equals(nameClasse)).collect(Collectors.toList());
         sortedNames.forEach(student -> System.out.println(student.getFristName()));
         }
 
-        public void searchDepartement(){
-            List<teacher> sorted = listT.stream().filter( dep -> dep.getdepartement().equals("IT")).collect(Collectors.toList());
+        public void searchDepartement(String depName){
+            List<teacher> sorted = listT.stream().filter( dep -> dep.getdepartement().equals(depName)).collect(Collectors.toList());
             sorted.forEach(dep -> System.out.println(dep));
         }
 
@@ -145,11 +150,27 @@ public class Mangment {
             listDep.add(record);
     }
 
+    public void displayAll(){
+        if(listNote.isEmpty()) System.out.println("Acun note disponible");
+            for(grade no : listNote){
+                System.out.println(no.toString());
+            }
+    }
+
     public void displayDepartement(){
         if(listDep.isEmpty()) System.out.println("acun departement disponible");
         for(departement DEP : listDep){
             System.out.println(DEP.toString());
         }
+    }
+
+    public void searchByClass(String nameClass){
+        list.stream().filter(student -> student.getnameClass().equals(nameClass))
+        .map(
+            boy -> 
+            listNote.stream().filter(
+            n -> n.getIdStudent() == boy.getIdUser()
+            ).collect(Collectors.toList())).flatMap(Collection::stream).collect(Collectors.toList()).forEach(System.out::println);
     }
 
         public void delete(int recIdNumber)
@@ -167,6 +188,10 @@ public class Mangment {
                 listDep.remove(recordDep);
                 System.out.println("suppression avec succès");
                 }
+            }
+
+            public void addNote(grade noteRecord){
+                listNote.add(noteRecord);
             }
          
 }
