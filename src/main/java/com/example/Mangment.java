@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
 import javafx.print.Collation;
@@ -194,5 +195,20 @@ public class Mangment {
                 listNote.add(noteRecord);
             }
          
+            public void getAvrege(){
+                OptionalDouble moyen = listNote.stream().mapToDouble(m -> m.getExameGrade()).average();
+                System.out.println(moyen);
+            }
+
+            public boolean findNote(int idetudiant){
+                for(grade g : listNote)
+                if(g.getIdStudent() == idetudiant){
+                    System.out.println(g);
+                    return true;
+                }else{
+                    System.out.println("Etudiant introuvable");
+                }
+                    return false;
+            }
 }
 
